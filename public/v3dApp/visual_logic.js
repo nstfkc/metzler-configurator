@@ -1180,6 +1180,14 @@ function createPL(v3d = window.v3d) {
     // Describe this function...
     function configure_plates_names() {
       if (dictGet(_STATE_addon_plates, "type") == "engrave") {
+        let _scaleArray = dictGet(_STATE_addon_plates, "names").map(__name => {
+          if(__name) {
+            return 9 / __name.length;
+          } else {
+            return 1;
+          }
+        }).sort((a, b) => a - b);
+        let _minScale = Math.min(_scaleArray[0], 1.2);
         for (let i = 0; i <= 14; i++) {
           var VARS = Object.defineProperties(
             {},
@@ -1917,6 +1925,7 @@ function createPL(v3d = window.v3d) {
 
           _name = dictGet(_STATE_addon_plates, "names")[i];
           _name_obj = ["engrave_text_", i + 1, "_addon"].join("");
+
           if (_name) {
             updateTextObj(_name_obj, _name);
           } else {
@@ -1925,9 +1934,30 @@ function createPL(v3d = window.v3d) {
               dictGet(_STATE_addon_plates, "default_name")
             );
           }
+          setObjTransform(
+            _name_obj,
+            false,
+            "scale",
+            [
+              _minScale,
+              _minScale,
+              _minScale,
+            ],
+            false
+          );
         }
       }
       if (dictGet(_STATE_basic_plates, "type") == "engrave") {
+
+        let _scaleArray = dictGet(_STATE_basic_plates, "names").map(__name => {
+          if(__name) {
+            return 9 / __name.length;
+          } else {
+            return 1;
+          }
+        }).sort((a, b) => a - b);
+        let _minScale = Math.min(_scaleArray[0], 1.2);
+
         for (let i = 0; i <= 14; i++) {
           var VARS = Object.defineProperties(
             {},
@@ -2673,6 +2703,17 @@ function createPL(v3d = window.v3d) {
               dictGet(_STATE_basic_plates, "default_name")
             );
           }
+          setObjTransform(
+            _name_obj_basic,
+            false,
+            "scale",
+            [
+              _minScale,
+              _minScale,
+              _minScale,
+            ],
+            false
+          );
         }
       }
     }
@@ -14813,6 +14854,7 @@ function createPL(v3d = window.v3d) {
       }
       _basic_module_id = dictGet(_STATE_basic_module, "id");
       if (dictGet(_STATE_skeleton, "cam_addon_target")) {
+        console.log("case 1 : ");
         _cam_module_target_position_x = getObjTransform(
           "addon_module",
           false,
@@ -14838,6 +14880,8 @@ function createPL(v3d = window.v3d) {
         );
         dictSet(_STATE_scene, "defalult_cam position", false);
       } else if (_basic_module_id >= 2 && _basic_module_id <= 16) {
+        console.log("case 2 : ");
+
         _cam_module_target_position_x =
           getObjTransform(
             "basic_module" + String(_basic_module_id),
@@ -14869,6 +14913,8 @@ function createPL(v3d = window.v3d) {
         setCameraParam("ALLOW_PANNING", "Camera", true);
         dictSet(_STATE_scene, "defalult_cam position", false);
       } else if (dictGet(_STATE_scene, "defalult_cam position")) {
+        console.log("case 3 : ");
+
         tweenCamera(
           "camera_default_position",
           "camera_default_target",
@@ -14877,6 +14923,8 @@ function createPL(v3d = window.v3d) {
           0
         );
       } else {
+        console.log("case 4 : ");
+
         setCameraParam("ALLOW_PANNING", "Camera", true);
         registerEveryFrame(function () {
           if (_cam_update_requests.slice(-1)[0]) {

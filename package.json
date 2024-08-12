@@ -1,6 +1,6 @@
 {
   "name": "metzler",
-  "version": "0.1.0",
+  "version": "1.22.22",
   "private": true,
   "engines": {
     "npm": ">=8.11.0",
@@ -64,5 +64,10 @@
   "resolutions": {
     "react": "18.2.0",
     "react-dom": "18.2.0"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": ".eslintrc.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -21,6 +21,37 @@ const PdfFooter = observer(({ products }: { products: Product[] }) => {
   const { getAllStates } = usePanelsStore();
 
   const rawProducts = calculateProducts(getAllStates());
+
+  const totalPrice = rawProducts.reduce(
+    (acc, { configuratorId, amount }) => {
+      const product = products.find(
+        (product) => product.configuratorId === configuratorId
+      );
+      if (!product) return acc;
+      let [euros, cents] = product.price.split(",");
+      let _cents = acc.cents + Number(cents) * amount;
+      let _euros = 0;
+      while (_cents >= 100) {
+        _cents -= 100;
+        _euros++;
+      }
+      return {
+        euros: _euros + acc.euros + Number(euros) * amount,
+        cents: _cents,
+      };
+    },
+    {
+      euros: 0,
+      cents: 0,
+    }
+  );
+
+  const { euros, cents } = totalPrice;
+
+  const priceString = `${euros.toLocaleString("de")},${cents
+    .toString()
+    .padStart(2, "0")}`;
+
   const tableData = rawProducts
     .map((product) => {
       const p = products.find(
@@ -88,6 +119,27 @@ const PdfFooter = observer(({ products }: { products: Product[] }) => {
             </View>
           );
         })}
+          <View
+              key={2323}
+              wrap={false}
+              style={styles.darkRow}
+            >
+              <Text style={styles.moduleName}></Text>
+              <View style={styles.moduleData}>
+                <Text style={[styles.bodyCell, styles.dimensionCell]}>
+                </Text>
+                <Text style={[styles.bodyCell, styles.artikelnummerCell]}>
+                </Text>
+                <Text style={[styles.bodyCell, styles.stuckpreisCell]}>
+                </Text>
+                <Text style={[styles.bodyCell, styles.anzahlCell]}>
+                  Gesamt
+                </Text>
+                <Text style={[styles.bodyPriceCell, styles.gesamtpreisCell]}>
+                  {priceString}
+                </Text>
+              </View>
+            </View>
       </View>
     </View>
   );
