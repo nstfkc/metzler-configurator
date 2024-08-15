@@ -81,13 +81,15 @@ export default class ZusatzmodulErweiterunPanelState {
   }
 
   public setZusatzmodulErweiterung(value: ZusatzmodulErweiterunType): void {
+    console.log("click--set:", value)
+    
     this.zusatzmodulErweiterung = value;
     if (value.value === 'klingetaster_rfid') {
       this._panelStore.panelsStore.setListPanels(PanelList.klingetaster_rfid);
       this._panelStore.panelsStore.nextStep();
       if (this._panelStore.panelsStore.montagePanelStore.state.mailBoxesCount === 1) {
-        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(false);
-        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(false);
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(true);
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(true);
       }
       this.setAddonModules(value);
       return;
@@ -97,8 +99,8 @@ export default class ZusatzmodulErweiterunPanelState {
       this._panelStore.panelsStore.setListPanels(PanelList.klingetaster);
       this._panelStore.panelsStore.nextStep();
       if (this._panelStore.panelsStore.montagePanelStore.state.mailBoxesCount === 1) {
-        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(false);
-        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(false);
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(true);
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(true);
       }
       this.setAddonModules(value);
       return;
@@ -108,8 +110,8 @@ export default class ZusatzmodulErweiterunPanelState {
       this._panelStore.panelsStore.setListPanels(PanelList.klingetaster_touchDisplay);
       this._panelStore.panelsStore.nextStep();
       if (this._panelStore.panelsStore.montagePanelStore.state.mailBoxesCount === 1) {
-        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(false);
-        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(false);
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(true);
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(true);
       }
       this.setAddonModules(value);
       return;

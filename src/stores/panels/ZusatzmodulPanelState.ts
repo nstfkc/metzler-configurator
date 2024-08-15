@@ -152,6 +152,8 @@ export default class ZusatzmodulPanelState {
 
   public setZusatzmodulType(value: ZusatzmodulType): void {
     this.zusatzmodulType = value;
+    console.log(value)
+
     const { state: montageState } =
       this._panelStore.panelsStore.montagePanelStore;
     const type =
@@ -161,19 +163,39 @@ export default class ZusatzmodulPanelState {
       this._panelStore.panelsStore.setListPanels(PanelList.klingetableu);
       this._panelStore.panelsStore.nextStep();
       this.setAddonsModules(value);
+
       if (montageState.mailBoxesCount < 2) {
         this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(
-          false
+          true
         );
         this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(
-          false
+          true
         );
       }
       this._panelStore.panelsStore.montagePanelStore.state.montageType = type;
       return;
-    }
+    } else if (value.value === "videoGegensprechmodul" || value.value === "audioGegensprechmodul") {
+      this.eventEmitter.emit("setIsAddonModule", true);
+      
+      this._panelStore.panelsStore.setListPanels(PanelList.klingetaster);
+      this._panelStore.panelsStore.nextStep();
+      this.setAddonsModules(value);
 
-    if (value.value === "ohne") {
+      if (montageState.mailBoxesCount < 2) {
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(
+          true
+        );
+        this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(
+          true
+        );
+      }
+
+      this.eventEmitter.emit("setIsAddonPlatesVisible", true);
+      this.eventEmitter.emit("setIsLight", true);
+
+      this._panelStore.panelsStore.montagePanelStore.state.montageType = type;
+      return;
+    } else if (value.value === "ohne") {
       this._panelStore.panelsStore.setListPanels(PanelList.ohne);
       this._panelStore.panelsStore.nextStep();
       this.setAddonsModules(value);
@@ -189,25 +211,26 @@ export default class ZusatzmodulPanelState {
       return;
     }
 
-    this.eventEmitter.emit("setIsAddonModule", true);
-    if (montageState.mailBoxesCount < 2) {
-      this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(
-        false
-      );
-      this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(
-        false
-      );
-    }
-    this.eventEmitter.emit("setIsAddonPlatesVisible", true);
-    this.eventEmitter.emit("setIsLight", true);
+    // this.eventEmitter.emit("setIsAddonModule", true);
+    // console.log(montageState.mailBoxesCount)
+    // if (montageState.mailBoxesCount < 2) {
+    //   this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleDies(
+    //     true
+    //   );
+    //   this._panelStore.panelsStore.briefkastenPanelStore.state.setVisibleType(
+    //     true
+    //   );
+    // }
+    // this.eventEmitter.emit("setIsAddonPlatesVisible", true);
+    // this.eventEmitter.emit("setIsLight", true);
 
-    if (value.value === "videoGegensprechmodul") this.setAddonsModules(value);
+    // if (value.value === "videoGegensprechmodul") this.setAddonsModules(value);
 
-    if (value.value === "audioGegensprechmodul") this.setAddonsModules(value);
+    // if (value.value === "audioGegensprechmodul") this.setAddonsModules(value);
 
-    this._panelStore.panelsStore.setListPanels(PanelList.klingetaster);
-    this._panelStore.panelsStore.nextStep();
-    this._panelStore.panelsStore.montagePanelStore.state.montageType = type;
+    // this._panelStore.panelsStore.setListPanels(PanelList.klingetaster);
+    // this._panelStore.panelsStore.nextStep();
+    // this._panelStore.panelsStore.montagePanelStore.state.montageType = type;
   }
 
   public setIsRestored(isRestored: boolean): void {
@@ -215,6 +238,8 @@ export default class ZusatzmodulPanelState {
   }
 
   public setZusatzmodulPosition(position: ZusatzmodulPosition): void {
+    console.log("---change align", position)
+
     this.zusatzmodulPosition = position;
     if (position === ZusatzmodulPosition.LINKS)
       this.eventEmitter.emit("setAddonModulePosition", false);
