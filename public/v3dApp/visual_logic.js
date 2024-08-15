@@ -14854,7 +14854,6 @@ function createPL(v3d = window.v3d) {
       }
       _basic_module_id = dictGet(_STATE_basic_module, "id");
       if (dictGet(_STATE_skeleton, "cam_addon_target")) {
-        console.log("case 1 : ");
         _cam_module_target_position_x = getObjTransform(
           "addon_module",
           false,
@@ -14880,7 +14879,6 @@ function createPL(v3d = window.v3d) {
         );
         dictSet(_STATE_scene, "defalult_cam position", false);
       } else if (_basic_module_id >= 2 && _basic_module_id <= 16) {
-        console.log("case 2 : ");
 
         _cam_module_target_position_x =
           getObjTransform(
@@ -14913,8 +14911,6 @@ function createPL(v3d = window.v3d) {
         setCameraParam("ALLOW_PANNING", "Camera", true);
         dictSet(_STATE_scene, "defalult_cam position", false);
       } else if (dictGet(_STATE_scene, "defalult_cam position")) {
-        console.log("case 3 : ");
-
         tweenCamera(
           "camera_default_position",
           "camera_default_target",
@@ -14923,8 +14919,6 @@ function createPL(v3d = window.v3d) {
           0
         );
       } else {
-        console.log("case 4 : ");
-
         setCameraParam("ALLOW_PANNING", "Camera", true);
         registerEveryFrame(function () {
           if (_cam_update_requests.slice(-1)[0]) {
