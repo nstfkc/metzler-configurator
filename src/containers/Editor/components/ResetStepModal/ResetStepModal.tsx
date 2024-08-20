@@ -38,7 +38,7 @@ const ResetStepModal: FC<ResetConfigurationModalProps> = memo((props) => {
       <Content>
         <div className={styles.root}>
           <div className={cn('primary-title', styles.title)}>
-            Sind Sie sicher, dass Sie diesen Schritt bearbeiten wollen? Alle nachfolgenden Schritte werden zurückgesetzt
+            Sind Sie sicher, dass Sie diesen Schritt bestätigen wollen? Alle nachfolgenden Schritte werden zurückgesetzt
           </div>
           <div className={styles.controls}>
             <Button
@@ -46,7 +46,7 @@ const ResetStepModal: FC<ResetConfigurationModalProps> = memo((props) => {
               onClick={cancelClickHandler}
             />
             <Button
-              label="Bearbeiten"
+              label="Bestätigen"
               colorScheme="white-outlined"
               onClick={resetStepClickHandler}
             />

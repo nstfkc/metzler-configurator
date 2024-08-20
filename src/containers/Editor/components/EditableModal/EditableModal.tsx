@@ -27,7 +27,7 @@ const EditableModal: FC<ClipboardModalProps> = (props) => {
     >
       <Content>
         <div className={styles.root}>
-          <div className={styles.title}>Wollen Sie die Konfiguration bearbeiten?</div>
+          <div className={styles.title}>Wollen Sie die Konfiguration bestätigen?</div>
           <div className={styles.description}>
             Bitte beachten Sie, dass eine neue Bestellung angelegt und eine neue Rechnung ausgestellt wird.
             Wenn es noch andere Bestellungen gibt, sollten Sie diese selbst über den Support stornieren
@@ -40,7 +40,7 @@ const EditableModal: FC<ClipboardModalProps> = (props) => {
             />
             <Button
               onClick={onEditClick}
-              label="Bearbeiten"
+              label="Bestätigen"
             />
           </div>
         </div>

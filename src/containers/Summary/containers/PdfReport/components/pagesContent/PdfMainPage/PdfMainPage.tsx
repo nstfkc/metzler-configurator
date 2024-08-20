@@ -14,7 +14,6 @@ const PdfMainPage: FC<PdfMainPageProps> = observer((props) => {
   const { configUrl } = useEditorStore();
   const element = document.getElementById(QR_CODE_ID) as HTMLCanvasElement;
   const dataUrl = element.toDataURL();
-
   return (
     <View style={styles.mainPage}>
       <View style={styles.mainPageHeader}>
@@ -26,7 +25,7 @@ const PdfMainPage: FC<PdfMainPageProps> = observer((props) => {
             />
           </View>
           <View style={styles.qrCodeInfo}>
-            <Text>{`Datum: ${new Date().toLocaleDateString('en-GB')}`}</Text>
+            <Text>{`Datum: ${new Date().toLocaleDateString('de-DE')}`}</Text>
             <View style={styles.qrCodeLink}>
               <Text>Link:</Text>
               <Link
