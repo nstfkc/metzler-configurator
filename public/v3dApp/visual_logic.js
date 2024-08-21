@@ -9791,6 +9791,7 @@ function createPL(v3d = window.v3d) {
         dictGet(_STATE_addon_plates, "visible") ||
         dictGet(_STATE_skeleton, "addon_module")
       ) {
+        console.log("config skeleton: run in addon module...")
         changeVis(["GROUP", "addon_module"], true);
         _place_type = "addon_module";
       } else {
@@ -14854,6 +14855,8 @@ function createPL(v3d = window.v3d) {
       }
       _basic_module_id = dictGet(_STATE_basic_module, "id");
       if (dictGet(_STATE_skeleton, "cam_addon_target")) {
+        console.log("set camera pos: ", 1)
+
         _cam_module_target_position_x = getObjTransform(
           "addon_module",
           false,
@@ -14879,6 +14882,7 @@ function createPL(v3d = window.v3d) {
         );
         dictSet(_STATE_scene, "defalult_cam position", false);
       } else if (_basic_module_id >= 2 && _basic_module_id <= 16) {
+        console.log("set camera pos: ", 2)
 
         _cam_module_target_position_x =
           getObjTransform(
@@ -14911,6 +14915,8 @@ function createPL(v3d = window.v3d) {
         setCameraParam("ALLOW_PANNING", "Camera", true);
         dictSet(_STATE_scene, "defalult_cam position", false);
       } else if (dictGet(_STATE_scene, "defalult_cam position")) {
+        console.log("set camera pos: ", 3)
+
         tweenCamera(
           "camera_default_position",
           "camera_default_target",
@@ -14919,6 +14925,8 @@ function createPL(v3d = window.v3d) {
           0
         );
       } else {
+        console.log("set camera pos: ", 4)
+
         setCameraParam("ALLOW_PANNING", "Camera", true);
         registerEveryFrame(function () {
           if (_cam_update_requests.slice(-1)[0]) {
@@ -17775,7 +17783,7 @@ function createPL(v3d = window.v3d) {
           "\n" +
           "        html2canvas(document.getElementById('v3d-container')).then(function(canvas) {" +
           "\n" +
-          "           const data = canvas.toDataURL();" +
+          "          console.log('make-screen-shot'); const data = canvas.toDataURL();" +
           "\n" +
           "            if (typeof callback === 'function') {" +
           "\n" +
@@ -17807,7 +17815,7 @@ function createPL(v3d = window.v3d) {
           "\n" +
           "        document.querySelector('#v3d-container').style.width = ''" +
           "\n" +
-          "                                                        document.querySelector('#v3d-container').style.height = ''" +
+          "             console.log('make-screen-shot--zoom-to-fit');                                           document.querySelector('#v3d-container').style.height = ''" +
           "\n" +
           "                                                        window.dispatchEvent(new Event('resize'));" +
           "\n" +
