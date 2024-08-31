@@ -14,6 +14,14 @@ const PdfMainPage: FC<PdfMainPageProps> = observer((props) => {
   const { configUrl } = useEditorStore();
   const element = document.getElementById(QR_CODE_ID) as HTMLCanvasElement;
   const dataUrl = element.toDataURL();
+
+  const date = new Date();
+  const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with zero if needed
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month (0-indexed) and pad
+  const year = date.getFullYear(); // Get full year
+
+  const formattedDate = `${day}.${month}.${year}`; // Combine into desired format
+
   return (
     <View style={styles.mainPage}>
       <View style={styles.mainPageHeader}>
@@ -25,7 +33,7 @@ const PdfMainPage: FC<PdfMainPageProps> = observer((props) => {
             />
           </View>
           <View style={styles.qrCodeInfo}>
-            <Text>{`Datum: ${new Date().toLocaleDateString('de-DE')}`}</Text>
+            <Text>{`Datum: ${formattedDate}`}</Text>
             <View style={styles.qrCodeLink}>
               <Text>Link:</Text>
               <Link

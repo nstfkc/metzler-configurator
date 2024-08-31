@@ -49,7 +49,7 @@ const NamensschildList = observer(() => {
   return (
     <div className={styles.root}>
       {namensschildList.map((item) => {
-        const placeholder = `Beschriftung des ${item.id}. Klingel`;
+        const placeholder = `Beschriftung der ${item.id}. Klingel`;
         const error = isErrorState(item.value);
 
         return (
