@@ -221,13 +221,13 @@ const KlingeltableuPanelForm = observer(() => {
                 value={BeschriftungNamensschild.EINSTECKSCHILD_MIT_PAPIEREINLEGER}
               />
             </InfoSection>
-            <InfoSection hintText="Gleichmäßige Hintegrundbeleuchtung der Namensschilder mittels ">
+            {/* <InfoSection hintText="Gleichmäßige Hintegrundbeleuchtung der Namensschilder mittels ">
               <Radio
                 title="Namensschild mit Gravur"
                 value={BeschriftungNamensschild.NAMENSSCHILD_MIT_GRAVUR}
                 disabled={klingeltasterCount > 12}
               />
-            </InfoSection>
+            </InfoSection> */}
           </div>
         </RadioGroup>
       </div>

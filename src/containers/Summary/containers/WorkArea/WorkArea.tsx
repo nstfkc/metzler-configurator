@@ -14,7 +14,7 @@ const WorkArea = () => {
           <PanelSection.InnenstationPanel isPreview />
           <PanelSection.RFIDPanel isPreview />
           <PanelSection.BriefkastenPanel isPreview />
-          <PanelSection.TextleistePanel isPreview />
+          {/* <PanelSection.TextleistePanel isPreview /> */}
         </PanelSection>
       </div>
     </div>
