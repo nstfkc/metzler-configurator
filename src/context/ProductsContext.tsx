@@ -8,6 +8,7 @@ export type Product = {
   price: string;
   dimensions: string;
   extraFieldId: null | number;
+  configUrl?: string;
 };
 
 export const ProductsContext = createContext({} as { products: Product[] });

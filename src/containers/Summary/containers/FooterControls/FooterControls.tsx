@@ -6,10 +6,14 @@ import ModelControls from "../ModelControls/ModelControls";
 import { calculateProducts } from "helpers/calculateProducts";
 import { useContext } from "react";
 import { ProductsContext } from "context/ProductsContext";
+import { useEditorStore } from "hooks/store/useEditorStore";
 
 const FooterControls = observer(() => {
   const { getAllStates } = usePanelsStore();
   const { products } = useContext(ProductsContext);
+
+  // add url parameter
+  const { configUrl } = useEditorStore();
 
   return (
     <div className={styles.root}>
@@ -35,6 +39,7 @@ const FooterControls = observer(() => {
                 ...calculatedProduct,
                 articleNumber: product.articleNumber,
                 extraFieldId: product.extraFieldId,
+                configUrl: configUrl
               };
             })
             .filter(Boolean);
