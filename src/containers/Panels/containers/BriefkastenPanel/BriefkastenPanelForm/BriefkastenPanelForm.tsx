@@ -120,14 +120,14 @@ const BriefkastenPanelForm: FC = observer(() => {
               value={BriefkastenType.PAPIEREINLEGER}
             />
           </InfoSection>
-          <InfoSection
+          {/* <InfoSection
             hintText="Hochwertige Edelstahl-Schilder mit Lasergravur. Dauerhaft witterungsbeständig und exklusiv im Design. Ersatzschilder jederzeit erhältlich."
           >
             <Radio
               title="Namensschild mit Gravur"
               value={BriefkastenType.GRAVUR}
             />
-          </InfoSection>
+          </InfoSection> */}
         </div>}
       </RadioGroup>
       <InfoSection hintText="Wählen Sie die gewünschte Ausführung des Briefkastengriffs. Beide Varianten sind stets im Lieferumfang enthalten und können nach belieben selbst getauscht werden">

@@ -158,7 +158,8 @@ export default class PanelsStore {
   }
 
   get canSaveConfiguration(): boolean {
-    return this.textleistePanelStore.isCompleted;
+    // return this.textleistePanelStore.isCompleted;
+    return this.briefkastenPanelStore.isCompleted;
   }
 
   public setIsManifestation(value: boolean): void {

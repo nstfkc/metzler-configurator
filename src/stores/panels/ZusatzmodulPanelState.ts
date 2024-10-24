@@ -152,7 +152,7 @@ export default class ZusatzmodulPanelState {
 
   public setZusatzmodulType(value: ZusatzmodulType): void {
     this.zusatzmodulType = value;
-    console.log(value)
+    console.log("setzusatzmodueltype:", value)
 
     const { state: montageState } =
       this._panelStore.panelsStore.montagePanelStore;

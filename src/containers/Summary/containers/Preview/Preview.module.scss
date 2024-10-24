@@ -52,3 +52,13 @@
   z-index: 0;
   height: 220%;
 }
+
+.widthGreater {
+  width: 150%; // Set width to 100% when width is greater than height
+  height: auto; // Maintain aspect ratio
+}
+
+.heightGreater {
+  width: auto; // Maintain aspect ratio
+  height: 220%; // Set height to 100% when height is greater than width
+}

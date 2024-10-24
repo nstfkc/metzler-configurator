@@ -27,7 +27,7 @@ const PdfConfiguration = observer(() => {
         <InnenstationPanel />
         <RFIDPanel />
         <BriefkastenPanel />
-        <TextleistePanel />
+        {/* <TextleistePanel /> */}
       </View>
     </View>
   );

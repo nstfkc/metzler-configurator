@@ -23,7 +23,7 @@ export const RedirectProvider: FC<RedirectProviderProps> = observer((props) => {
       if (configId) {
         getPanelsConfig(configId)
           .then((response) => {
-            redirectUser.isCreatedNonFinished(response.status as OrderStatus, !!response.payload.textleiste);
+            redirectUser.isCreatedNonFinished(response.status as OrderStatus, !!response.payload.briefkasten);
             redirectUser.isOrdered(response.status as OrderStatus);
             if (redirectUser.isRedirect) router.push({ pathname: '/', query: { uuid: configId } });
             if (!canSaveConfiguration) router.push({ pathname: '/', query: { uuid: router.query.uuid } });

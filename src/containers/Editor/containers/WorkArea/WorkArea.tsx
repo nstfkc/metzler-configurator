@@ -21,7 +21,7 @@ const WorkArea: FC = observer(() => {
           <PanelSection.InnenstationPanel isEditable={isEditConfig} />
           <PanelSection.RFIDPanel isEditable={isEditConfig} />
           <PanelSection.BriefkastenPanel isEditable={isEditConfig} />
-          <PanelSection.TextleistePanel isEditable={isEditConfig} />
+          {/* <PanelSection.TextleistePanel isEditable={isEditConfig} /> */}
         </PanelSection>
       </div>
       <ConfirmConfiguration />

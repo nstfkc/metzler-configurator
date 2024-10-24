@@ -100,7 +100,7 @@ const Editor: FC = observer(() => {
             <div className={styles.controls}>
               <Button label="Abbrechen" onClick={() => {}} />
               <Button
-                label="Bearbeiten"
+                label="Bestätigen"
                 colorScheme="white-outlined"
                 onClick={() => console.log("success")}
               />

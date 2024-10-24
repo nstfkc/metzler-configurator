@@ -14,7 +14,7 @@ const BriefkastenPanel = observer(() => {
           <Text style={styles.value}>{state.briefkasteType}</Text>
         </View>
         <View style={styles.option}>
-          <Text style={styles.label}>Shriftart</Text>
+          <Text style={styles.label}>Schriftart</Text>
           <Text style={styles.value}>{state.schriftart}</Text>
         </View>
         <View style={styles.option}>
